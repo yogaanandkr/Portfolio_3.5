@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-page: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--blue);
+  --color-action: var(--button);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --font-sans: Manrope, Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+@layer base {
+  html {
+    @apply scroll-smooth scroll-pt-[25px];
+  }
+  body {
+    @apply m-0 bg-page font-sans text-[16px] leading-[1.7] text-ink transition-colors duration-250;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-3 outline-offset-5 outline-accent;
+  }
+  ::selection {
+    @apply bg-action text-white;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+/* Only observer state and custom keyframes need handwritten CSS. */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.65s,
+    transform 0.65s;
+}
+.reveal[data-revealed='true'] {
+  opacity: 1;
+  transform: none;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes float {
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
