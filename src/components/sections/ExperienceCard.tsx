@@ -67,9 +67,6 @@ export function ExperienceCard({ experience, expanded, onToggle }: ExperienceCar
               <li key={detail}>{detail}</li>
             ))}
           </ul>
-          <p className="mt-5 text-[12px] text-muted">
-            Internal product · Professional contributions
-          </p>
         </div>
       </div>
     </Card>
