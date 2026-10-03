@@ -5,7 +5,7 @@ export const profile = {
   email: 'yogaanandkr@gmail.com',
   github: 'https://github.com/yogaanandkr',
   linkedin: 'https://www.linkedin.com/in/yoga-anand-b07809219/',
-  resume: '/Yoga_Anand_FE.pdf',
+  resume: `${import.meta.env.BASE_URL}yogaanand_resume.pdf`,
 } as const;
 export const navigation = ['Experience', 'Skills', 'Contact'] as const;
 
